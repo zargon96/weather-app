@@ -6,22 +6,22 @@ body {
 }
 
 body.bg-clear {
-  background: url("/src/img/clear.webp") no-repeat center center fixed;
+  background: url("/public/img/clear.webp") no-repeat center center fixed;
   background-size: cover;
 }
 
 body.bg-cloudy {
-  background: url("/src/img/cloudy.webp") no-repeat center center fixed;
+  background: url("/public/img/cloudy.webp") no-repeat center center fixed;
   background-size: cover;
 }
 
 body.bg-rainy {
-  background: url("/src/img/rainy.webp") no-repeat center center fixed;
+  background: url("/public/img/rainy.webp") no-repeat center center fixed;
   background-size: cover;
 }
 
 body.bg-fog {
-  background: url("/src/img/fog.webp") no-repeat center center fixed;
+  background: url("/public/img/fog.webp") no-repeat center center fixed;
   background-size: cover;
 }
 
