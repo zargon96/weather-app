@@ -10,14 +10,17 @@ exports.handler = async function (event, context) {
     };
   }
 
-  const apiKey = process.env.GEOAPIFY_API_KEY;
+  const API_KEY = process.env.GEOAPIFY_API_KEY;
 
-  const apiUrl = `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(
+  //   const apiUrl = `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(
+  //     query
+  //   )}&type=city&limit=10&lang=it&apiKey=${apiKey}`;
+  const url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(
     query
-  )}&type=city&limit=10&lang=it&apiKey=${apiKey}`;
+  )}&type=city&limit=10&lang=it&apiKey=${API_KEY}`;
 
   try {
-    const response = await fetch(apiUrl);
+    const response = await fetch(url);
     const data = await response.json();
     return {
       statusCode: 200,
