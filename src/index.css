@@ -7,22 +7,22 @@ body {
 }
 
 body.bg-clear {
-  background: url("/img/clear-2.webp") no-repeat center center;
+  background: url("public/img/clear-2.webp") no-repeat center center;
   background-size: cover;
 }
 
 body.bg-cloudy {
-  background: url("/img/cloudy-2.webp") no-repeat center center;
+  background: url("public/img/cloudy-2.webp") no-repeat center center;
   background-size: cover;
 }
 
 body.bg-rainy {
-  background: url("/img/rainy-2.webp") no-repeat center center;
+  background: url("public/img/rainy-2.webp") no-repeat center center;
   background-size: cover;
 }
 
 body.bg-fog {
-  background: url("/img/fog-2.webp") no-repeat center center;
+  background: url("public/img/fog-2.webp") no-repeat center center;
   background-size: cover;
 }
 
