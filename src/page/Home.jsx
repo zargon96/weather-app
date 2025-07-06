@@ -9,22 +9,35 @@ import { weatherMap } from "../components/WeatherMap";
 import { useWeather } from "../context/WeatherContext";
 import "../styles/home.css";
 
+const weatherCodeMap = new Map([
+  [[0, 1], "bg-clear"],
+  [[2, 3], "bg-cloudy"],
+  [[45, 48], "bg-fog"],
+  [[51, 53, 55, 61, 63, 65, 80, 81, 82, 95, 96, 99], "bg-rainy"],
+]);
+
 const getBackgroundClass = (code) => {
   if (code === null || code === undefined) return "bg-default";
-  if ([0, 1].includes(code)) return "bg-clear";
-  if ([2, 3].includes(code)) return "bg-cloudy";
-  if ([45, 48].includes(code)) return "bg-fog";
-  if ([51, 53, 55, 61, 63, 65, 80, 81, 82, 95, 96, 99].includes(code))
-    return "bg-rainy";
+
+  for (const [codes, className] of weatherCodeMap.entries()) {
+    if (codes.includes(code)) return className;
+  }
+
   return "bg-default";
 };
 
+const aqiDescriptionMap = new Map([
+  [20, "Ottima"],
+  [40, "Buona"],
+  [60, "Accettabile"],
+  [80, "Scarsa"],
+  [100, "Molto scarsa"],
+]);
+
 const getAqiDescription = (aqi) => {
-  if (aqi <= 20) return "Ottima";
-  if (aqi <= 40) return "Buona";
-  if (aqi <= 60) return "Accettabile";
-  if (aqi <= 80) return "Scarsa";
-  if (aqi <= 100) return "Molto scarsa";
+  for (const [max, description] of aqiDescriptionMap.entries()) {
+    if (aqi <= max) return description;
+  }
   return "Estremamente scarsa";
 };
 
