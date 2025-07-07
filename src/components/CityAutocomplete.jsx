@@ -97,7 +97,7 @@ const CityAutocomplete = ({ onSelect, savedQuery, onClear }) => {
         aria-label="Campo di ricerca città"
       />
       {query.length >= 2 && suggestions.length > 0 && (
-        <ul className="list-group position-absolute w-100 mt-1 zindex-dropdown">
+        <ul className="list-group position-absolute w-100 mt-1 container zindex-1000">
           {renderedSuggestions}
         </ul>
       )}
