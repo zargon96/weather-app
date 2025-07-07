@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import CityAutocomplete from "../components/CityAutocomplete";
 import ForecastList from "../components/ForecastList";
 import WeatherInfoGrid from "../components/WeatherInfo";
@@ -8,6 +8,7 @@ import LiveClock from "../components/LiveClock";
 import { weatherMap } from "../components/WeatherMap";
 import { useWeather } from "../context/WeatherContext";
 import "../styles/home.css";
+import gsap from "gsap";
 
 const weatherCodeMap = new Map([
   [[0, 1], "bg-clear"],
@@ -18,11 +19,9 @@ const weatherCodeMap = new Map([
 
 const getBackgroundClass = (code) => {
   if (code === null || code === undefined) return "bg-default";
-
   for (const [codes, className] of weatherCodeMap.entries()) {
     if (codes.includes(code)) return className;
   }
-
   return "bg-default";
 };
 
@@ -61,8 +60,8 @@ const Home = () => {
 
   const [isExpanded, setIsExpanded] = useState(false);
   const toggleExpanded = () => setIsExpanded((prev) => !prev);
-
   const [initialCityLoaded, setInitialCityLoaded] = useState(false);
+  const weatherRef = useRef(null);
 
   useEffect(() => {
     if (city && !initialCityLoaded) {
@@ -80,6 +79,22 @@ const Home = () => {
     return () => document.body.classList.remove(bgClass);
   }, [weatherCode]);
 
+  useEffect(() => {
+    if (weatherRef.current) {
+      gsap.fromTo(
+        weatherRef.current,
+        { opacity: 0, y: 30, filter: "blur(8px)" },
+        {
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.8,
+          ease: "power2.out",
+        }
+      );
+    }
+  }, [weather]);
+
   const weatherData = useMemo(
     () => [
       { label: "Vento", value: `${weather?.windspeed ?? "-"} km/h` },
@@ -96,8 +111,11 @@ const Home = () => {
   );
 
   return (
-    <div className="container rounded shadow p-4" style={{ maxWidth: 400 }}>
-      <h1 className="text-center mb-4">🌤️ Meteo</h1>
+    <div
+      className="container rounded shadow p-4 glass-box"
+      style={{ maxWidth: 400 }}
+    >
+      <h1 className="text-center mb-4">Meteo</h1>
 
       <CityAutocomplete
         onSelect={setCity}
@@ -116,7 +134,10 @@ const Home = () => {
       </div>
 
       {weather && !loading && (
-        <div className="mt-4 text-center container">
+        <div
+          className="mt-4 text-center container animate-weather"
+          ref={weatherRef}
+        >
           <div className="row gx-3 gy-3">
             <div className="col-12">
               <div className="glass-box p-4 text-start">

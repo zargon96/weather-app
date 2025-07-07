@@ -17,3 +17,4 @@ Un app meteo sviluppata con **React**, che consente di cercare città in tempo r
 - OpenWeatherMap API
 - Geoapify Autocomplete API
 - CSS
+- gsap

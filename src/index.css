@@ -27,7 +27,8 @@ body.bg-fog {
 }
 
 body.bg-default {
-  background: linear-gradient(to bottom, #aee1f9, #f2f9ff);
+  background: url("/public/img/all-bg.webp") no-repeat center center;
+  background-size: cover;
 }
 
 .app-container {
