@@ -36,6 +36,7 @@
 
 .forecast-card {
   flex: 0 0 68px;
+  margin-bottom: 10px;
 }
 
 .max-min {
