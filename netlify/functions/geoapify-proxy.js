@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 
-exports.handler = async function (event, context) {
+exports.handler = async function (event) {
   const query = event.queryStringParameters.text;
 
   if (!query) {
