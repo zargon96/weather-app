@@ -27,7 +27,7 @@ body.bg-fog {
 }
 
 body.bg-default {
-  background: url("/public/img/all-bg.webp") no-repeat center center;
+  background: url("/public/img/clear.webp") no-repeat center center;
   background-size: cover;
 }
 
